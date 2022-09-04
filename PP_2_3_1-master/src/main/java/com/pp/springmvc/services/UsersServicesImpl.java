@@ -37,8 +37,8 @@ public class UsersServicesImpl implements UsersServices{
         return userDao.getUserById(id);
     }
 
-    /*@Override
+    @Override
     public List<User> listUser() {
         return userDao.listUser();
-    }*/
+    }
 }
