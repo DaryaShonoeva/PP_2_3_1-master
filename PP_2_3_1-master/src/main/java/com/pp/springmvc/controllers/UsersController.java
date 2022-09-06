@@ -23,13 +23,13 @@ public class UsersController {
 
 
     @GetMapping()
-    public String show(Model model) {
+    public String showAllUsers(Model model) {
         model.addAttribute("users", usersServices.listUser());
         return "users/users";
     }
 
     @GetMapping("/{id}")
-    public String index(@PathVariable("id") int id, Model model) {
+    public String showUserById(@PathVariable("id") int id, Model model) {
         model.addAttribute("index", usersServices.getUserById(id));
         return "users/index";
     }
@@ -47,19 +47,19 @@ public class UsersController {
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id) {
+    public String editUsers(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", usersServices.getUserById(id));
         return "/users/edit";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
+    public String updateUsers(@ModelAttribute("user") User user, @PathVariable("id") int id) {
         usersServices.updateUser(user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/{id}/delete")
-    public String delete(@PathVariable("id") int id) {
+    public String deleteUsers(@PathVariable("id") int id) {
         usersServices.removeUser(id);
         return "redirect:/users";
     }
